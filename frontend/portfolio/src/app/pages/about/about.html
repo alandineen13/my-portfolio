@@ -1,0 +1,102 @@
+<!-- Header -->
+<section class="section about-header">
+  <div class="container">
+    <h1 class="section-title">About <span>Me</span></h1>
+    <div class="about-intro">
+      <p>
+        Full Stack Engineer with 6+ years building enterprise web applications, high-traffic public platforms,
+        REST APIs and cloud-hosted solutions. Based in Cork, Ireland. Currently at Fidelity Investments,
+        as the primary technical representative of a platform serving 2M+ annual visitors and have grown from sole engineer to deputy
+        technical lead.
+      </p>
+      <div class="about-actions">
+        <a routerLink="/contact" class="btn btn-primary">Get in Touch</a>
+        <a href="/assets/AlanDanielDineen__CV.pdf" download class="btn btn-outline">Download CV</a>
+        <a href="https://github.com/alandineen13" target="_blank" rel="noopener" class="btn btn-ghost">GitHub</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Career Journey -->
+<section class="section journey-section">
+  <div class="container">
+    <h2 class="section-title">Career <span>Journey</span></h2>
+    <p class="section-subtitle">From Business Information Systems to Full Stack Engineering.</p>
+
+    <div class="timeline">
+      @for (step of journey; track step.stage; let last = $last) {
+        <div class="timeline-item">
+          <div class="timeline-marker">
+            <div class="timeline-dot"></div>
+            @if (!last) {
+              <div class="timeline-line"></div>
+            }
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <div>
+                <h3 class="timeline-stage">{{ step.stage }}</h3>
+                @if (step.company) {
+                  <p class="timeline-company">{{ step.company }}</p>
+                }
+              </div>
+              <span class="timeline-period">{{ step.period }}</span>
+            </div>
+            <p class="timeline-desc">{{ step.description }}</p>
+            @if (step.highlights) {
+              <ul class="timeline-highlights">
+                @for (h of step.highlights; track h) {
+                  <li>{{ h }}</li>
+                }
+              </ul>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Technologies -->
+<section class="section skills-section">
+  <div class="container">
+    <h2 class="section-title">Technical <span>Skills</span></h2>
+    <p class="section-subtitle">Tools and languages I work with.</p>
+
+    <div class="skills-grid">
+      @for (group of skillGroups; track group.category) {
+        <div class="skill-group card">
+          <h3 class="skill-category">{{ group.category }}</h3>
+          <div class="skill-tags">
+            @for (item of group.items; track item) {
+              <span class="tag">{{ item }}</span>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Certifications -->
+<section class="section certs-section">
+  <div class="container">
+    <h2 class="section-title"><span>Certifications</span></h2>
+    <div class="certs-grid">
+      @for (cert of certifications; track cert.name) {
+        <div class="card cert-card">
+          <div class="cert-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+          </div>
+          <div>
+            <p class="cert-name">{{ cert.name }}</p>
+            @if (cert.issuer) {
+              <p class="cert-issuer">{{ cert.issuer }}</p>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
